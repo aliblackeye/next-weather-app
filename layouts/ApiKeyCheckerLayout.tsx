@@ -24,7 +24,6 @@ export default function ApiKeyCheckerLayout(props: IApiKeyCheckerLayout) {
             toast.error("API Key doğrulanamadı!");
             sessionStorage.removeItem("api_key");
             router.push("/api-key");
-            router.refresh();
         }
 
         else if(isValid) {
@@ -38,7 +37,7 @@ export default function ApiKeyCheckerLayout(props: IApiKeyCheckerLayout) {
         if (api_key !== "")
             checkApiIsValid(api_key);
 
-        else { router.push("/api-key"); router.refresh();}
+        else { router.push("/api-key");}
 
     }
 
