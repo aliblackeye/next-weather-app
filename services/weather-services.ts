@@ -1,8 +1,20 @@
 import axios from "axios";
 
 const BASE_URL = "https://api.openweathermap.org/data/2.5";
+const GEO_BASE_URL = "https://api.openweathermap.org/geo/1.0";
 
-const getWeather = async (lat: string, lon: string, api_key: string) => {
+
+const getCoordinatesByLocationName = async (city: string, api_key: string) => {
+  try {
+    return await axios.get(
+      `${GEO_BASE_URL}/direct?q=${city}&limit=1&appid=${api_key}`
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getWeather = async (lat: number, lon: number, api_key: string) => {
   try {
     return await axios.get(
       `${BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${api_key}`
@@ -14,7 +26,9 @@ const getWeather = async (lat: string, lon: string, api_key: string) => {
 
 const checkApiKey = async (api_key: string) => {
   try {
-    const response = await axios.get(`${BASE_URL}/weather?lat=0&lon=0&appid=${api_key}`);
+    const response = await axios.get(
+      `${BASE_URL}/weather?lat=0&lon=0&appid=${api_key}`
+    );
     if (response.status === 200) {
       return true;
     }
@@ -27,4 +41,5 @@ const checkApiKey = async (api_key: string) => {
 export const weatherServices = {
   getWeather,
   checkApiKey,
+  getCoordinatesByLocationName,
 };

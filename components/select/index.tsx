@@ -15,14 +15,15 @@ interface ISelect {
     options: SelectOption[];
     placeholder?: string;
     block?: boolean;
+    onChange?: (value: string | number) => void;
 }
 
 export default function Select(props: ISelect) {
 
-    const { defaultValue, options, placeholder, block } = props;
+    const { defaultValue, options, placeholder, block,onChange } = props;
 
     return (
-        <RSelect.Root defaultValue={defaultValue} >
+        <RSelect.Root defaultValue={defaultValue} onValueChange={onChange} >
             <RSelect.Trigger placeholder={placeholder} className={`${block ? "w-full" : "!min-w-32"}`} />
             <RSelect.Content>
                 {

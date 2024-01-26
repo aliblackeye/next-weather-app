@@ -13,19 +13,19 @@ export default function Index() {
   // Variables
   let api_key = "";
 
-
-
   // States
-  const [weather, setWeather] = useState<any>(null);
   const [cities, setCities] = useState<SelectOption[]>([]);
+  const [weather, setWeather] = useState<any>(null);
 
   if (typeof window !== "undefined") {
     api_key = sessionStorage.getItem("api_key") as string;
   }
 
   // Functions
-  const getWeather = async () => {
-    const data = await weatherServices.getWeather("istanbul", "a", api_key);
+  const getWeather = async (
+    { lat, lon }: { lat: number; lon: number }
+  ) => {
+    const data = await weatherServices.getWeather(lat, lon, api_key);
     setWeather(data);
   };
 
@@ -44,6 +44,18 @@ export default function Index() {
     setCities(options);
   };
 
+  const handleChangeCity = async (value: any) => {
+    const city = cities.find(i => i.value === value)?.label as string;
+    const res = await weatherServices.getCoordinatesByLocationName(city, api_key)
+    const lat = res?.data[0]?.lat;
+    const lon = res?.data[0]?.lon;
+
+    await getWeather({
+      lat,
+      lon,
+    });
+  }
+
   // Effects
   useEffect(() => {
     getCities();
@@ -52,8 +64,9 @@ export default function Index() {
   // Render
   return (
     <main className="main container">
-      {weather}
-      <Select options={cities} placeholder="Bir şehir seçiniz." />
+      <Select options={cities} placeholder="Bir şehir seçiniz." onChange={
+        handleChangeCity
+      } />
 
     </main>
   )
