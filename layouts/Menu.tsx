@@ -11,7 +11,7 @@ export default function Menu() {
     flex 
     items-center 
     justify-evenly 
-    w-full p-2 
+    w-full py-3 
     bg-primary mt-16 
     sticky 
     bottom-0 
