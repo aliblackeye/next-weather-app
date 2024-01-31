@@ -9,6 +9,6 @@ export default function SearchSelect(props: ISearchSelectProps) {
     const { className } = props;
 
     return (
-        <Select {...props} className={`search-select !p-8 !rounded-3xl !text-2xl ${className}`} />
+        <Select {...props} className={`search-select !p-6 !rounded-3xl !text-xl ${className}`} />
     )
 }

@@ -11,7 +11,7 @@ export default function WeeklyForecast() {
           <Flex align="center" justify="between" width="100%">
             <span className="text-secondary">Today</span>
             {/* WEATHER IMAGE */}
-            <Image src={"/images/sunny.png"} width={70} height={70} alt="weather" />
+            <Image src={"/images/sunny.png"} width={60} height={60} alt="weather" />
           </Flex>
           <Flex align="center" justify="between" width="100%">
             <span>Sunny</span>
@@ -23,7 +23,7 @@ export default function WeeklyForecast() {
           <Flex align="center" justify="between" width="100%">
             <span className="text-secondary">Today</span>
             {/* WEATHER IMAGE */}
-            <Image src={"/images/sunny.png"} width={70} height={70} alt="weather" />
+            <Image src={"/images/sunny.png"} width={60} height={60} alt="weather" />
           </Flex>
           <Flex align="center" justify="between" width="100%">
             <span>Sunny</span>
@@ -35,7 +35,7 @@ export default function WeeklyForecast() {
           <Flex align="center" justify="between" width="100%">
             <span className="text-secondary">Today</span>
             {/* WEATHER IMAGE */}
-            <Image src={"/images/sunny.png"} width={70} height={70} alt="weather" />
+            <Image src={"/images/sunny.png"} width={60} height={60} alt="weather" />
           </Flex>
           <Flex align="center" justify="between" width="100%">
             <span>Sunny</span>
@@ -47,7 +47,7 @@ export default function WeeklyForecast() {
           <Flex align="center" justify="between" width="100%">
             <span className="text-secondary">Today</span>
             {/* WEATHER IMAGE */}
-            <Image src={"/images/sunny.png"} width={70} height={70} alt="weather" />
+            <Image src={"/images/sunny.png"} width={60} height={60} alt="weather" />
           </Flex>
           <Flex align="center" justify="between" width="100%">
             <span>Sunny</span>
@@ -59,7 +59,7 @@ export default function WeeklyForecast() {
           <Flex align="center" justify="between" width="100%">
             <span className="text-secondary">Today</span>
             {/* WEATHER IMAGE */}
-            <Image src={"/images/sunny.png"} width={70} height={70} alt="weather" />
+            <Image src={"/images/sunny.png"} width={60} height={60} alt="weather" />
           </Flex>
           <Flex align="center" justify="between" width="100%">
             <span>Sunny</span>

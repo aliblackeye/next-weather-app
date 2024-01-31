@@ -11,7 +11,7 @@ export default function Menu() {
     flex 
     items-center 
     justify-evenly 
-    w-full p-6 
+    w-full p-2 
     bg-primary mt-16 
     sticky 
     bottom-0 
@@ -20,16 +20,16 @@ export default function Menu() {
     border-secondary/20
     ">
       <Link href={"/dashboard"}>
-        <TiWeatherCloudy size={40} />
+        <TiWeatherCloudy size={24} />
       </Link>
       <Link href={"/cities"}>
-        <BiMenu size={40} />
+        <BiMenu size={24} />
       </Link>
       <Link href={"/map"}>
-        <BsMap size={24} />
+        <BsMap size={16} />
       </Link>
       <Link href={"/settings"}>
-        <IoSettings size={30} />
+        <IoSettings size={18} />
       </Link>
     </div>
   )
