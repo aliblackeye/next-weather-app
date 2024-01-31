@@ -15,12 +15,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={`${fonts.outfit.className} app-container bg-dark pt-8`}>
+    <div className={`${fonts.outfit.className} app-container bg-dark`}>
 
       <main className="content">
         {children}
       </main>
-      <Menu />
+      {/* <Menu /> */}
 
 
 

@@ -1,7 +1,14 @@
 import { Box, Flex } from "@radix-ui/themes";
 import Image from "next/image";
+interface IWeeklyForecast {
+  weather: any;
+}
 
-export default function WeeklyForecast() {
+export default function WeeklyForecast(props: IWeeklyForecast) {
+
+  // Props
+  const { weather } = props;
+
   return (
     <Flex direction="column" className="bg-primary pt-4 px-6 pb-6 rounded-3xl w-full">
       <h1 className="font-bold text-secondary">5- DAY FORECAST</h1>

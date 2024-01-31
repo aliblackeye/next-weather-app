@@ -47,7 +47,7 @@ export default function Weather() {
     // Şehirleri seçeneklere ekliyoruz.
     const options = res?.data?.map((i: any) => {
       return {
-        value: i.ID,
+        value: i.ID.toString(),
         label: i.TEXT
       }
     });
@@ -75,12 +75,15 @@ export default function Weather() {
 
   // Render
   return (
-    <div className="container">
+    <div className="container py-8">
       <Flex direction={"column"} align={"center"}>
+        {/* SEARCH SELECT */}
         <SearchSelect
+          disabled={cities.length === 0}
+          defaultValue={"34"}
           options={cities}
           block
-          placeholder="Select a city.."
+          placeholder={"Select a city"}
           onChange={
             handleChangeCity
           }
@@ -99,9 +102,9 @@ export default function Weather() {
         <h1 className="text-5xl my-10">31°</h1>
 
         <Flex direction={"column"} width={"100%"} className="gap-6" >
-          <TodayForecast />
-          <WeeklyForecast />
-          <WeatherConditions />
+          <TodayForecast weather={weather}/>
+          <WeeklyForecast weather={weather}/>
+          <WeatherConditions weather={weather}/>
         </Flex>
 
       </Flex>

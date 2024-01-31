@@ -12,7 +12,7 @@ export default function Menu() {
     items-center 
     justify-evenly 
     w-full py-3 
-    bg-primary mt-16 
+    bg-primary
     sticky 
     bottom-0 
     drop-shadow-2xl 

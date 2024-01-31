@@ -36,12 +36,11 @@ export default function ApiKeyCheckerLayout(props: IApiKeyCheckerLayout) {
     if (typeof window !== "undefined") {
         api_key = sessionStorage.getItem("api_key") || "";
 
-/*         if (api_key !== "")
+        if (api_key !== "")
             checkApiIsValid(api_key);
 
-        else { router.push("/");  } */
+        else { router.push("/"); }
 
-        router.push("/dashboard");
 
     }
 

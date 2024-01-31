@@ -5,7 +5,15 @@ import { FiSun } from 'react-icons/fi'
 import { IoWaterOutline } from 'react-icons/io5'
 import { RiWindyFill } from 'react-icons/ri'
 
-export default function WeatherConditions() {
+
+interface IWeatherConditions {
+    weather: any;
+  }
+export default function WeatherConditions(props:IWeatherConditions) {
+
+    // Props
+    const { weather } = props;
+    
     return (
         <div className="bg-primary pt-4 px-6 pb-6 rounded-3xl w-full">
             <h1 className="font-bold text-secondary">AIR CONDITIONS</h1>

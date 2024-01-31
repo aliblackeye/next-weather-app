@@ -1,5 +1,10 @@
 import { Box, Flex } from "@radix-ui/themes";
 import Image from "next/image";
+
+interface ITodayForecast {
+    weather: any;
+}
+
 const TodayWeather = () => {
     return <Flex direction="column" align={"center"} width={"100%"} gap={"4"}>
         {/* CLOCK */}
@@ -13,7 +18,11 @@ const TodayWeather = () => {
     </Flex>
 }
 
-export default function TodayForecast() {
+export default function TodayForecast(props: ITodayForecast) {
+
+    // Props
+    const { weather } = props;
+
     return (
         <div className="bg-primary pt-4 px-6 pb-6 rounded-3xl w-full">
             <h1 className="font-bold text-secondary mb-4">TODAY&apos;S FORECAST</h1>
