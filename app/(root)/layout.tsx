@@ -1,14 +1,12 @@
+// Libs
 import type { Metadata } from "next";
 
 // Layouts
-import ApiKeyCheckerLayout from "@layouts/ApiKeyCheckerLayout";
+import { fonts } from "@fonts/index";
+import Menu from "@layouts/Menu";
 
 export const metadata: Metadata = {
-  title: {
-    template: "Hava Durumu | %s",
-    default: "Ana Sayfa",
-  },
-  description: "OpenWeatherMap ile hava durumu uygulaması.",
+  title: "API Anahtarı Kontrolü",
 };
 
 export default function RootLayout({
@@ -17,10 +15,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <ApiKeyCheckerLayout>
+    <div className={`${fonts.outfit.className} app-container bg-dark pt-8`}>
+
+      <main className="content">
         {children}
-      </ApiKeyCheckerLayout>
-    </>
+      </main>
+      <Menu />
+
+
+
+    </div>
   );
 }

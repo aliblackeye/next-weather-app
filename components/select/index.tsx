@@ -7,24 +7,25 @@ export type SelectOption = {
     group?: {
         label?: string;
         items: SelectOption[];
-    }
+    };
 }
 
-interface ISelect {
+export interface ISelect {
     defaultValue?: string;
     options: SelectOption[];
     placeholder?: string;
     block?: boolean;
+    className?: string;
     onChange?: (value: string | number) => void;
 }
 
 export default function Select(props: ISelect) {
 
-    const { defaultValue, options, placeholder, block,onChange } = props;
+    const { defaultValue, options, placeholder, block, onChange, className } = props;
 
     return (
-        <RSelect.Root defaultValue={defaultValue} onValueChange={onChange} >
-            <RSelect.Trigger placeholder={placeholder} className={`${block ? "w-full" : "!min-w-32"}`} />
+        <RSelect.Root defaultValue={defaultValue} onValueChange={onChange}  >
+            <RSelect.Trigger placeholder={placeholder} className={`${block ? "w-full" : "!min-w-32"} ${className}`} />
             <RSelect.Content>
                 {
                     options?.map((item, index) => {

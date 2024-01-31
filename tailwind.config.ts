@@ -8,7 +8,14 @@ const config: Config = {
     "./layouts/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: "#202b3c",
+        secondary: "#a6a6a6",
+        dark: "#0B121E",
+        black: "#000000",
+      },
+    },
   },
   plugins: [],
 };

@@ -23,25 +23,31 @@ export default function ApiKeyCheckerLayout(props: IApiKeyCheckerLayout) {
         if (!isValid) {
             toast.error("API Key doğrulanamadı!");
             sessionStorage.removeItem("api_key");
-            router.push("/api-key");
+            router.push("/");
         }
 
-        else if(isValid) {
+        else if (isValid) {
             sessionStorage.setItem("api_key", api_key);
+            router.push("/dashboard");
+
         }
     }
 
     if (typeof window !== "undefined") {
         api_key = sessionStorage.getItem("api_key") || "";
 
-        if (api_key !== "")
+/*         if (api_key !== "")
             checkApiIsValid(api_key);
 
-        else { router.push("/api-key");}
+        else { router.push("/");  } */
+
+        router.push("/dashboard");
 
     }
 
     return (
-        <div>{children}</div>
+        <>
+            {children}
+        </>
     )
 }

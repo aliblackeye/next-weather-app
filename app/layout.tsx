@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 
-// Fonts
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+
 
 // Radix
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
 
 // Styles
 import "./globals.css";
@@ -17,6 +15,8 @@ import { ToastContainer } from "react-toastify";
 
 // Layouts
 import AppLayout from "@layouts/AppLayout";
+import ApiKeyCheckerLayout from "@layouts/ApiKeyCheckerLayout";
+import { fonts } from "@fonts/index";
 
 export const metadata: Metadata = {
   title: {
@@ -33,15 +33,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Theme grayColor="sand" radius="none" scaling="95%">
-          <AppLayout>
-            {children}
-            {/* <ThemePanel  /> */}
-            <ToastContainer />
-          </AppLayout>
+      <body className={`dark ${fonts.outfit.className}`}>
+        <Theme
+          accentColor="indigo"
+          grayColor="gray"
+          panelBackground="solid"
+          scaling="100%"
+          radius="large"
+          appearance="dark"
+        >
+          <ApiKeyCheckerLayout>
+            <AppLayout>
+              {children}
+              <ToastContainer />
+            </AppLayout>
+          </ApiKeyCheckerLayout>
         </Theme>
       </body>
-    </html>
+    </html >
   );
 }

@@ -21,6 +21,7 @@
       "@components/*": ["./components/*"],
       "@layouts/*": ["./layouts/*"],
       "@services/*": ["./services/*"],
+      "@fonts/*": ["./common/fonts/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

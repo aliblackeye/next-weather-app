@@ -1,14 +1,26 @@
 "use client";
-import { useEffect, useState } from "react";
 
-// Components
-import Select, { SelectOption } from "@components/select";
+// Libs
+import { useEffect, useState } from "react";
 
 // Services
 import { weatherServices } from "@services/weather-services";
 import { countryServices } from "@services/country-services";
 
-export default function Index() {
+// Partials
+import WeatherConditions from "./_partials/WeatherConditions";
+import TodayForecast from "./_partials/TodayForecast";
+import WeeklyForecast from "./_partials/WeeklyForecast";
+
+// Components
+import { SelectOption } from "@components/select";
+import SearchSelect from "@components/search-select";
+import { Box, Flex } from "@radix-ui/themes";
+import Image from "next/image";
+
+
+
+export default function Weather() {
 
   // Variables
   let api_key = "";
@@ -63,11 +75,39 @@ export default function Index() {
 
   // Render
   return (
-    <main className="main container">
-      <Select options={cities} placeholder="Bir şehir seçiniz." onChange={
-        handleChangeCity
-      } />
+    <div className="container">
+      <Flex direction={"column"} align={"center"}>
+        <SearchSelect
+          options={cities}
+          block
+          placeholder="Select a city.."
+          onChange={
+            handleChangeCity
+          }
+        />
 
-    </main>
+        {/* CITY AND CHANCHES */}
+        <div className="flex flex-col items-center my-10">
+          <h1 className="text-5xl font-semibold">Istanbul</h1>
+          <h5 className="text-base">Chance of rain: 0%</h5>
+        </div>
+
+
+        {/* WEATHER IMAGE */}
+        <Image src={"/images/sunny.png"} width={200} height={200} alt="weather" />
+
+        <h1 className="text-5xl my-10">31°</h1>
+
+        <Flex direction={"column"} width={"100%"} className="gap-6" >
+          <TodayForecast />
+          <WeeklyForecast />
+          <WeatherConditions />
+        </Flex>
+
+      </Flex>
+
+
+
+    </div>
   )
 }

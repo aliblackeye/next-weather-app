@@ -2,7 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
-.container {
-  @apply mx-auto px-4;
-  max-width: 1000px;
+
+
+
+.dark {
+  background-color: theme('colors.black')
 }
+
+.app-container {
+  @apply mx-auto max-w-3xl;
+}
+
+.container {
+  @apply mx-auto px-12 max-w-3xl;
+}
+
