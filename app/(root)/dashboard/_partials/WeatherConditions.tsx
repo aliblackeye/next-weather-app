@@ -1,7 +1,6 @@
 import { Flex } from '@radix-ui/themes'
 import React from 'react'
-import { FaThermometerFull } from 'react-icons/fa'
-import { FiSun } from 'react-icons/fi'
+import { FaShower, FaThermometerFull } from 'react-icons/fa'
 import { IoWaterOutline } from 'react-icons/io5'
 import { RiWindyFill } from 'react-icons/ri'
 
@@ -23,7 +22,7 @@ export default function WeatherConditions(props:IWeatherConditions) {
                         <FaThermometerFull className='text-secondary mt-1 mx-1' />
                         <Flex direction={"column"} className='text-secondary'>
                             Real Feel
-                            <span className='text-white font-bold'>31°</span>
+                            <span className='text-white font-bold'>{(weather.list[0].main.feels_like - 273.15).toFixed(0)}°</span>
                         </Flex>
 
                     </Flex>
@@ -31,9 +30,8 @@ export default function WeatherConditions(props:IWeatherConditions) {
                         <RiWindyFill className='text-secondary mt-1 mx-1' />
                         <Flex direction={"column"} className='text-secondary'>
                             Wind
-                            <span className='text-white font-bold'>31°</span>
+                            <span className='text-white font-bold'>{weather.list[0].wind.speed} km/h</span>
                         </Flex>
-
                     </Flex>
                 </Flex>
                 <Flex className='py-4'>
@@ -41,17 +39,15 @@ export default function WeatherConditions(props:IWeatherConditions) {
                         <IoWaterOutline className='text-secondary mt-1 mx-1' />
                         <Flex direction={"column"} className='text-secondary'>
                             Chance of rain
-                            <span className='text-white font-bold'>31°</span>
+                            <span className='text-white font-bold'>{weather.list[0].pop * 100}%</span>
                         </Flex>
-
                     </Flex>
                     <Flex width="100%" className='gap-[1px]'>
-                        <FiSun className='text-secondary mt-1 mx-1' />
+                        <FaShower className='text-secondary mt-1 mx-1' />
                         <Flex direction={"column"} className='text-secondary'>
-                            UV Index
-                            <span className='text-white font-bold'>31°</span>
+                            Humidity
+                            <span className='text-white font-bold'>{weather.list[0].main.humidity}%</span>
                         </Flex>
-
                     </Flex>
                 </Flex>
             </Flex>

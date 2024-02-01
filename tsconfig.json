@@ -22,6 +22,7 @@
       "@layouts/*": ["./layouts/*"],
       "@services/*": ["./services/*"],
       "@fonts/*": ["./common/fonts/*"],
+      "@interfaces/*": ["common/interfaces/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
