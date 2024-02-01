@@ -1,7 +1,8 @@
-import { Box, Flex } from "@radix-ui/themes";
+import { Flex } from "@radix-ui/themes";
 import { WeatherIcons } from "@interfaces/weather-types";
 import Image from "next/image";
 
+import { motion } from "framer-motion";
 
 interface ITodayForecast {
     weather: any;
@@ -15,7 +16,22 @@ const TodayWeather = ({ info }: {
         icon: WeatherIcons;
     }
 }) => {
-    return <Flex direction="column" align={"center"} width={"100%"} gap={"4"}>
+
+    // Animations
+    const item = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+        }
+        
+    }
+
+    return <motion.div
+        variants={item}
+        initial="hidden"
+        animate="visible"
+        className="flex flex-col items-center w-full gap-2">
         {/* CLOCK */}
         <span className="font-bold text-secondary">{info.time.slice(0, 2)}:00
             <span>{Number(info.time.slice(0, 2)) >= 12 ? " PM" : " AM"}</span>
@@ -28,7 +44,7 @@ const TodayWeather = ({ info }: {
 
         {/* DEGREE */}
         <h1 className="text-2xl font-bold">{info.temp}°</h1>
-    </Flex>
+    </motion.div>
 }
 
 export default function TodayForecast(props: ITodayForecast) {
@@ -36,11 +52,29 @@ export default function TodayForecast(props: ITodayForecast) {
     // Props
     const { weather } = props;
 
+    // Animations
+    const container = {
+        hidden: { opacity: 1, scale: 0 },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                delayChildren: 0.2,
+                staggerChildren: 0.2
+            }
+        }
+    }
+
     return (
         <div className="bg-primary pt-4 px-6 pb-6 rounded-3xl w-full">
             <h1 className="font-bold text-secondary mb-4">TODAY&apos;S FORECAST</h1>
 
-            <Flex>
+            <motion.div
+                className="flex"
+                variants={container}
+                initial="hidden"
+                animate="visible"
+            >
                 {weather.list.slice(0, 3).map((item: any, key: number) => {
 
                     const info = {
@@ -50,13 +84,11 @@ export default function TodayForecast(props: ITodayForecast) {
                         icon: item.weather[0].icon
                     };
 
-                    console.log(info)
-
                     return <TodayWeather info={info} key={key} />
                 })}
 
 
-            </Flex>
+            </motion.div>
         </div>
     )
 }

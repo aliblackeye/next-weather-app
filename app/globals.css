@@ -2,15 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
 .dark {
   background-color: theme('colors.black')
 }
 
 .app-container {
-  @apply mx-auto max-w-xl;
+  @apply mx-auto max-w-xl ;
 }
 
 .container {
