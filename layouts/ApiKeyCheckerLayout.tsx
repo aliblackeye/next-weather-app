@@ -28,7 +28,9 @@ export default function ApiKeyCheckerLayout(props: IApiKeyCheckerLayout) {
 
         else if (isValid) {
             sessionStorage.setItem("api_key", api_key);
-            router.push("/dashboard");
+
+       
+            router.push("/dashboard/");
 
         }
     }

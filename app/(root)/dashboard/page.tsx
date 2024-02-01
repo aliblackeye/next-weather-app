@@ -4,6 +4,11 @@
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import { Flex } from "@radix-ui/themes";
+import { motion } from "framer-motion";
+
+// Interfaces
+import { WeatherIcons } from "@interfaces/weather-types";
+
 
 // Services
 import { weatherServices } from "@services/weather-services";
@@ -18,7 +23,7 @@ import WeeklyForecast from "./_partials/WeeklyForecast";
 import { SelectOption } from "@components/select";
 import SearchSelect from "@components/search-select";
 import Loading from "@components/loading";
-import { WeatherIcons } from "@interfaces/weather-types";
+
 
 export default function Weather() {
 
@@ -27,17 +32,14 @@ export default function Weather() {
 
   // Animations
   const container = {
-    hidden: { opacity: 1, scale: 0 },
     visible: {
-      opacity: 1,
-      scale: 1,
       transition: {
-        delayChildren: 0.3,
+        delayChildren: 0.2,
         staggerChildren: 0.2
       }
     }
   }
-    
+
   const item = {
     hidden: { y: 20, opacity: 0 },
     visible: {
@@ -45,7 +47,6 @@ export default function Weather() {
       opacity: 1
     }
   }
-
 
   // States
   const [cities, setCities] = useState<SelectOption[]>([]);
@@ -113,7 +114,11 @@ export default function Weather() {
   // Render
   return (
     <div className="container py-8">
-      <Flex direction={"column"} align={"center"}>
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="flex flex-col items-center">
         {/* SEARCH SELECT */}
         <SearchSelect
           disabled={cities.length === 0}
@@ -127,15 +132,25 @@ export default function Weather() {
         />
 
         {/* CITY AND CHANCHES */}
-        <div className="flex flex-col items-center my-10">
+        <motion.div
+          variants={item}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col items-center my-10">
           <h1 className="text-5xl font-semibold">{city}</h1>
-          <h5 className="text-base">Chance of rain: 0%</h5>
-        </div>
+          <h5 className="text-base">Chance of rain: {weather.list[0].pop * 100}%</h5>
+        </motion.div>
 
         {/* WEATHER IMAGE */}
-        <Image src={WeatherIcons[weather.list[0].weather[0].icon as unknown as keyof typeof WeatherIcons]} width={200} height={200} alt="weather" />
+        <motion.div
+          variants={item}
+          initial="hidden"
+          animate="visible"
+        >
+          <Image src={WeatherIcons[weather.list[0].weather[0].icon as unknown as keyof typeof WeatherIcons]} width={200} height={200} alt="weather" />
+        </motion.div>
 
-        <h1 className="text-5xl my-10">31°</h1>
+        <h1 className="text-5xl my-10">{(weather.list[0].main.temp - 273.15).toFixed(0)}°</h1>
 
         <Flex direction={"column"} width={"100%"} className="gap-6" >
           <TodayForecast weather={weather} />
@@ -143,10 +158,7 @@ export default function Weather() {
           <WeatherConditions weather={weather} />
         </Flex>
 
-      </Flex>
-
-
-
+      </motion.div>
     </div>
   )
 }
